@@ -29,7 +29,7 @@ class Intern extends Employee {
         this.school = school;
     }
 };
-// functions to add new employees to the employee list
+// functions to ask for new employee info
 function newMember(){
     inquirer.prompt([
         {
@@ -47,6 +47,7 @@ function newMember(){
         }
     })
 }
+
 function newEngineer(){
 inquirer.prompt([
     {
@@ -71,6 +72,30 @@ inquirer.prompt([
     console.log(employeeList);
 newMember();
 });};
+function newIntern(){
+inquirer.prompt([
+    {
+        type: `input`,
+        message: `What is the intern's name?`,
+        name: `internName`},
+    {
+        type: `input`,
+        message: `What is the intern's id?`,
+        name: `internId`},
+    {
+        type: `input`,
+        message: `What is the intern's email?`,
+        name: `internEmail`},
+    {
+        type: `input`,
+        message: `What is the intern's school?`,
+        name: `internSchool`}
+]).then(function(answer){
+    let newIntern = new Intern(answer.internName, answer.internId, answer.internEmail, `Intern`, answer.internSchool);
+    employeeList.push(newIntern);
+    console.log(employeeList);
+newMember();
+})}
 // Prompt for manager details
 inquirer.prompt([
     {
