@@ -46,9 +46,31 @@ function newMember(){
             teamComplete();
         }
     })
-    
 }
-
+function newEngineer(){
+inquirer.prompt([
+    {
+        type: `input`,
+        message: `What is the engineer's name?`,
+        name: `engineerName`},
+    {
+        type: `input`,
+        message: `What is the engineer's id?`,
+        name: `engineerId`},
+    {
+        type: `input`,
+        message: `What is the engineer's email?`,
+        name: `engineerEmail`},
+    {
+        type: `input`,
+        message: `What is the engineer's github?`,
+        name: `engineerGithub`}
+]).then(function(answer){
+    let newEngineer = new Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, `Engineer`, answer.engineerGithub);
+    employeeList.push(newEngineer);
+    console.log(employeeList);
+newMember();
+});};
 // Prompt for manager details
 inquirer.prompt([
     {
@@ -72,6 +94,8 @@ inquirer.prompt([
     let teamManager = new Manager(answer.Manager, answer.id, answer.email, "Manager", answer.officeNumber);
     // Push new manager object to employeeList array
     employeeList.push(teamManager);
+    // Call newMember function to prompt for new employee
+    newMember();
     })
 
     
