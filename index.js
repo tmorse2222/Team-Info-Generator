@@ -1,13 +1,16 @@
 // Npm requirements
 const fs = require(`fs`);
 const inquirer = require(`inquirer`);
+// Employee list
+let employeeList = [];
 // Class creation
-function Employee(name, id, email, role) {
+class Employee {
+    constructor(name, id, email, role) {
     this.name = name;
     this.id = id;
     this.email = email;
     this.role = role;
-};
+}};
 class Manager extends Employee {
     constructor(name, id, email, role, officeNumber) {
         super(name, id, email, role);
@@ -15,17 +18,37 @@ class Manager extends Employee {
     }
 };
 class Engineer extends Employee {
-    constructor(name, id, email, role) {
+    constructor(name, id, email, role, github) {
         super(name, id, email, role);
         this.github = github;
     }
 };
 class Intern extends Employee {
-    constructor(name, id, email, role) {
+    constructor(name, id, email, role, school) {
         super(name, id, email, role);
         this.school = school;
     }
 };
+// functions to add new employees to the employee list
+function newMember(){
+    inquirer.prompt([
+        {
+            type: `list`,
+            message: `Would you like to add a new employee?`,
+            name: `employeeType`,
+            choices: [`Engineer`, `Intern`, `Team complete`]
+    }]).then(function(answer){
+        if (answer.employeeType === `Engineer`){
+            newEngineer();
+        } else if (answer.employeeType === `Intern`){
+            newIntern();
+        } else {
+            teamComplete();
+        }
+    })
+    
+}
+
 // Prompt for manager details
 inquirer.prompt([
     {
@@ -46,6 +69,9 @@ inquirer.prompt([
     type: `input`}
     ]).then(function(answer){
     // Create new manager object
-    const manager = new Manager(answer.Manager, answer.id, answer.email, "Manager", answer.officeNumber);
-    console.log(manager);
+    let teamManager = new Manager(answer.Manager, answer.id, answer.email, "Manager", answer.officeNumber);
+    // Push new manager object to employeeList array
+    employeeList.push(teamManager);
     })
+
+    
