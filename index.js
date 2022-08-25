@@ -69,9 +69,9 @@ inquirer.prompt([
 ]).then(function(answer){
     let newEngineer = new Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, `Engineer`, answer.engineerGithub);
     employeeList.push(newEngineer);
-    console.log(employeeList);
 newMember();
 });};
+
 function newIntern(){
 inquirer.prompt([
     {
@@ -93,9 +93,17 @@ inquirer.prompt([
 ]).then(function(answer){
     let newIntern = new Intern(answer.internName, answer.internId, answer.internEmail, `Intern`, answer.internSchool);
     employeeList.push(newIntern);
-    console.log(employeeList);
 newMember();
 })}
+
+function teamComplete(){
+    console.log(employeeList);
+fs.writeFile(`GoTeam.html`, `<!DOCTYPE html>`, function(err){
+    if (err) throw err;
+    console.log(`File created`);
+});
+}
+
 // Prompt for manager details
 inquirer.prompt([
     {
