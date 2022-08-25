@@ -3,6 +3,8 @@ const fs = require(`fs`);
 const inquirer = require(`inquirer`);
 // Employee list
 let employeeList = [];
+// Project Name
+let projectName = ``;
 // Class creation
 class Employee {
     constructor(name, id, email, role) {
@@ -98,14 +100,31 @@ newMember();
 
 function teamComplete(){
     console.log(employeeList);
-fs.writeFile(`GoTeam.html`, `<!DOCTYPE html>`, function(err){
+fs.writeFile(`${projectName}Team.html`, `
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>${projectName}</title>
+  </head>
+  <body>
+
+  </body>
+</html>
+`, function(err){
     if (err) throw err;
-    console.log(`File created`);
+    console.log(`File created under ${projectName}Team.html`);
 });
 }
 
 // Prompt for manager details
 inquirer.prompt([
+    {
+        type: `input`,
+        message: `What is the project's name?`,
+        name: `projectName`},
     {
    name: 'Manager',
    message: "What is the name of the team manager?",
@@ -127,6 +146,8 @@ inquirer.prompt([
     let teamManager = new Manager(answer.Manager, answer.id, answer.email, "Manager", answer.officeNumber);
     // Push new manager object to employeeList array
     employeeList.push(teamManager);
+    // Save project name to variable
+    projectName = answer.projectName;
     // Call newMember function to prompt for new employee
     newMember();
     })
