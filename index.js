@@ -110,7 +110,18 @@ fs.writeFile(`${projectName}Team.html`, `
     <title>${projectName}</title>
   </head>
   <body>
-
+    <header>
+        <h1>${projectName}</h1>
+        <h2>Team Members</h2>
+    </header>
+    <main>
+    <section>
+        <h3>${employeeList[0].name}</h3>
+        <p>${employeeList[0].role}</p>
+        <p>Email: ${employeeList[0].email}</p>
+        <p>ID: ${employeeList[0].id}</p>
+        <p>Github: ${employeeList[0].officeNumber}</p>
+    </section>
   </body>
 </html>
 `, function(err){
