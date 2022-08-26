@@ -114,33 +114,27 @@ function generateHtml() {
     </header>
     <main>`;
     for (let i = 0; i < employeeList.length; i++) { 
+        htmlContent += `
+        <section>
+            <h3>${employeeList[i].name}</h3>
+            <p>${employeeList[i].role}</p>
+            <p>Employee ID: ${employeeList[i].id}</p>
+            <p>Email: ${employeeList[i].email}</p>`;
         if (employeeList[i].role === `Manager`) {
-    htmlContent += `<section>
-        <h3>${employeeList[i].name}</h3>
-        <p>${employeeList[i].role}</p>
-        <p>Email: ${employeeList[i].email}</p>
-        <p>ID: ${employeeList[i].id}</p>
-        <p>Github: ${employeeList[i].officeNumber}</p>
-    </section>`
-    } else if (employeeList[i].role === `Engineer`) {
-        htmlContent += `<section>
-            <h3>${employeeList[i].name}</h3>
-            <p>${employeeList[i].role}</p>
-            <p>Email: ${employeeList[i].email}</p>
-            <p>ID: ${employeeList[i].id}</p>
-            <p>Github: ${employeeList[i].github}</p>
-        </section>`
-    } else if (employeeList[i].role === `Intern`) {
-        htmlContent += `<section>
-            <h3>${employeeList[i].name}</h3>
-            <p>${employeeList[i].role}</p>
-            <p>Email: ${employeeList[i].email}</p>
-            <p>ID: ${employeeList[i].id}</p>
-            <p>School: ${employeeList[i].school}</p>
-        </section>`
-    }
+         htmlContent += `
+         <p>Office Number: ${employeeList[i].officeNumber}</p>`;
+        } else if (employeeList[i].role === `Engineer`) {
+            htmlContent += `
+            <p>GitHub Profile: ${employeeList[i].github}</p>`;
+        } else if (employeeList[i].role === `Intern`) {
+            htmlContent += `
+            <p>School: ${employeeList[i].school}</p>`;
+        }
+        htmlContent += `
+        </section>`;
 }
-htmlContent += `</main>
+htmlContent += `
+</main>
     </body>
 </html>`;
 };
@@ -148,7 +142,7 @@ htmlContent += `</main>
 function teamComplete(){
     console.log(employeeList);
     generateHtml()
-fs.writeFile(`${projectName}Team.html`, htmlContent,
+fs.writeFile(`${projectName} Team.html`, htmlContent,
  function(err){
     if (err) throw err;
     console.log(`File created under ${projectName}Team.html`);
