@@ -106,26 +106,26 @@ function generateHtml() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>${projectName}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   </head>
   <body>
-    <header>
-        <h1>${projectName}</h1>
-        <h2>Team Members</h2>
+    <header class = "page-header">
+        <h1>${projectName}  <small>Team Members</small></h1>
     </header>
-    <main>`;
+    <main class="container-fluid" style="display:flex">`;
     for (let i = 0; i < employeeList.length; i++) { 
         htmlContent += `
-        <section>
+        <section class="text-center" style="flex: 1; border: 1px solid black">
             <h3>${employeeList[i].name}</h3>
             <p>${employeeList[i].role}</p>
             <p>Employee ID: ${employeeList[i].id}</p>
-            <p>Email: ${employeeList[i].email}</p>`;
+            <p>Email: <a href = "mailto: ${employeeList[i].email}">${employeeList[i].email}</a></p>`;
         if (employeeList[i].role === `Manager`) {
          htmlContent += `
          <p>Office Number: ${employeeList[i].officeNumber}</p>`;
         } else if (employeeList[i].role === `Engineer`) {
             htmlContent += `
-            <p>GitHub Profile: ${employeeList[i].github}</p>`;
+            <p>GitHub Profile: <a href = "https://github.com/${employeeList[i].github}" target = "_blank">${employeeList[i].github}</a></p>`;
         } else if (employeeList[i].role === `Intern`) {
             htmlContent += `
             <p>School: ${employeeList[i].school}</p>`;
