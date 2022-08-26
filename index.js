@@ -112,7 +112,7 @@ function generateHtml() {
     <header class = "page-header" style="padding-left: 3px; border-bottom: 1px solid rgb(0, 187, 187);">
         <h1>${projectName}  <small>Team Members</small></h1>
     </header>
-    <main class="container-fluid" style="display:flex">`;
+    <main class="container-fluid" style="display:flex; flex-wrap: wrap;">`;
     for (let i = 0; i < employeeList.length; i++) { 
         htmlContent += `
         <section class="text-center" style="flex: 1; border: 1px solid rgb(0, 187, 187); padding: 3px;">
