@@ -108,14 +108,14 @@ function generateHtml() {
     <title>${projectName}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   </head>
-  <body>
-    <header class = "page-header">
+  <body style="background-color: rgb(199, 199, 199); color: rgb(0, 187, 187); font-size: 13;">
+    <header class = "page-header" style="padding-left: 3px; border-bottom: 1px solid rgb(0, 187, 187);">
         <h1>${projectName}  <small>Team Members</small></h1>
     </header>
     <main class="container-fluid" style="display:flex">`;
     for (let i = 0; i < employeeList.length; i++) { 
         htmlContent += `
-        <section class="text-center" style="flex: 1; border: 1px solid black">
+        <section class="text-center" style="flex: 1; border: 1px solid rgb(0, 187, 187); padding: 3px;">
             <h3>${employeeList[i].name}</h3>
             <p>${employeeList[i].role}</p>
             <p>Employee ID: ${employeeList[i].id}</p>
