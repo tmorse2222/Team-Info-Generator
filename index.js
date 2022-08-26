@@ -1,6 +1,7 @@
 // Npm requirements
 const fs = require(`fs`);
 const inquirer = require(`inquirer`);
+var htmlContent = "";
 // Employee list
 let employeeList = [];
 // Project Name
@@ -97,11 +98,8 @@ inquirer.prompt([
     employeeList.push(newIntern);
 newMember();
 })}
-
-function teamComplete(){
-    console.log(employeeList);
-fs.writeFile(`${projectName}Team.html`, `
-<!DOCTYPE html>
+function generateHtml() {
+    htmlContent = `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -114,22 +112,49 @@ fs.writeFile(`${projectName}Team.html`, `
         <h1>${projectName}</h1>
         <h2>Team Members</h2>
     </header>
-    <main>
-    <section>
-        <h3>${employeeList[0].name}</h3>
-        <p>${employeeList[0].role}</p>
-        <p>Email: ${employeeList[0].email}</p>
-        <p>ID: ${employeeList[0].id}</p>
-        <p>Github: ${employeeList[0].officeNumber}</p>
-    </section>
-  </body>
-</html>
-`, function(err){
+    <main>`;
+    for (let i = 0; i < employeeList.length; i++) { 
+        if (employeeList[i].role === `Manager`) {
+    htmlContent += `<section>
+        <h3>${employeeList[i].name}</h3>
+        <p>${employeeList[i].role}</p>
+        <p>Email: ${employeeList[i].email}</p>
+        <p>ID: ${employeeList[i].id}</p>
+        <p>Github: ${employeeList[i].officeNumber}</p>
+    </section>`
+    } else if (employeeList[i].role === `Engineer`) {
+        htmlContent += `<section>
+            <h3>${employeeList[i].name}</h3>
+            <p>${employeeList[i].role}</p>
+            <p>Email: ${employeeList[i].email}</p>
+            <p>ID: ${employeeList[i].id}</p>
+            <p>Github: ${employeeList[i].github}</p>
+        </section>`
+    } else if (employeeList[i].role === `Intern`) {
+        htmlContent += `<section>
+            <h3>${employeeList[i].name}</h3>
+            <p>${employeeList[i].role}</p>
+            <p>Email: ${employeeList[i].email}</p>
+            <p>ID: ${employeeList[i].id}</p>
+            <p>School: ${employeeList[i].school}</p>
+        </section>`
+    }
+}
+htmlContent += `</main>
+    </body>
+</html>`;
+};
+
+function teamComplete(){
+    console.log(employeeList);
+    generateHtml()
+fs.writeFile(`${projectName}Team.html`, htmlContent,
+ function(err){
     if (err) throw err;
     console.log(`File created under ${projectName}Team.html`);
 });
-}
 
+};
 // Prompt for manager details
 inquirer.prompt([
     {
