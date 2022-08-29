@@ -88,9 +88,12 @@ function generateHtml() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>${projectName}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   </head>
-  <body style="background-color: rgb(199, 199, 199); color: rgb(0, 134, 134); font-size: 13;">
+  <body style="background-color: rgb(199, 199, 199); color: rgb(0, 134, 134); font-size: 15; font-family: 'Signika Negative', sans-serif;">
     <header class = "page-header" style="padding-left: 3px; border-bottom: 1px solid rgb(0, 187, 187);">
         <h1>${projectName}  <small>Team Members</small></h1>
     </header>
@@ -131,7 +134,7 @@ fs.writeFile(`${projectName} Team.html`, htmlContent,
 });
 
 };
-// Prompt for manager details
+// Calls prompt for Project Name and Manager details
 inquirer.prompt([
     {
         type: `input`,
@@ -160,7 +163,7 @@ inquirer.prompt([
     employeeList.push(teamManager);
     // Save project name to variable
     projectName = answer.projectName;
-    // Call newMember function to prompt for new employee
+    // Call newMember function to prompt for new employee or team complete
     newMember();
     })
 
