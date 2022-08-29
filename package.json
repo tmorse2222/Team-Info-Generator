@@ -1,0 +1,27 @@
+{
+  "name": "team-info-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmorse2222/Team-Info-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tmorse2222/Team-Info-Generator/issues"
+  },
+  "homepage": "https://github.com/tmorse2222/Team-Info-Generator#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "jest": "^29.0.1"
+  }
+}
