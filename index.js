@@ -135,6 +135,7 @@ fs.writeFile(`${projectName} Team.html`, htmlContent,
 
 };
 // Calls prompt for Project Name and Manager details
+function start(){
 inquirer.prompt([
     {
         type: `input`,
@@ -166,5 +167,8 @@ inquirer.prompt([
     // Call newMember function to prompt for new employee or team complete
     newMember();
     })
+};
+
+start();
 
     
