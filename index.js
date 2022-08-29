@@ -2,6 +2,7 @@
 const fs = require(`fs`);
 const inquirer = require(`inquirer`);
 const Employee = require(`./lib/employee.js`);
+const Manager = require(`./lib/manager.js`);
 let htmlContent = "";
 // Employee list
 let employeeList = [];
@@ -9,12 +10,7 @@ let employeeList = [];
 let projectName = ``;
 // Class creation
 
-class Manager extends Employee.Employee {
-    constructor(name, id, email, role, officeNumber) {
-        super(name, id, email, role);
-        this.officeNumber = officeNumber;
-    }
-};
+
 class Engineer extends Employee.Employee {
     constructor(name, id, email, role, github) {
         super(name, id, email, role);
@@ -168,7 +164,7 @@ inquirer.prompt([
     type: `input`}
     ]).then(function(answer){
     // Create new manager object
-    let teamManager = new Manager(answer.Manager, answer.id, answer.email, "Manager", answer.officeNumber);
+    let teamManager = new Manager.Manager(answer.Manager, answer.id, answer.email, "Manager", answer.officeNumber);
     // Push new manager object to employeeList array
     employeeList.push(teamManager);
     // Save project name to variable
