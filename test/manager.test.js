@@ -84,6 +84,14 @@ describe(`Manager`, () => {
             // Assert
             expect(cb).toThrowError(err);
         }),
+        it(`should throw an error if 'officeNumber' is an empty string`, () => {
+            // Arrange
+            const cb = () => new Manager("name", "1", "email", "Manager", "");
+            const err = new Error(
+                `Expected parameter 'officeNumber' to be a non empty string`
+            );
+            expect(cb).toThrowError(err);
+        }),
         it(`should create an object with a 'role' property set to the 'role' argument provided when called with the 'new' keyword`, () => {
             // Arrange
             const role = `Manager`;

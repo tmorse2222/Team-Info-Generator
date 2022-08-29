@@ -25,6 +25,13 @@ describe(`Employee`, () => {
             // Assert
             expect(cb).toThrowError(err);
         }),
+        it(`should throw an error if "name" provided is an empty string`, () => {
+            // Arrange
+            const cb = () => new Employee(``, `123`, `email`, `Engineer`);
+            const err = new Error(
+                `Expected parameter 'name' to be a non empty string`);
+                expect(cb).toThrowError(err);
+            }),
         it(`should create an object with a 'id' property set to the 'id' argument provided when called with the 'new' keyword`, () => {
             // Arrange
             const id = `1`;
@@ -43,6 +50,14 @@ describe(`Employee`, () => {
             );
 
             // Assert
+            expect(cb).toThrowError(err);
+        });
+        it(`should throw an error if "id" provided is an empty string`, () => {
+            // Arrange
+            const cb = () => new Employee("name", ``, "email", "Engineer");
+            const err = new Error(
+                `Expected parameter 'id' to be a non empty string`
+            );
             expect(cb).toThrowError(err);
         }),
         it(`should create an object with a 'email' property set to the 'email' argument provided when called with the 'new' keyword`, () => {
@@ -65,6 +80,13 @@ describe(`Employee`, () => {
             // Assert
             expect(cb).toThrowError(err);
         }),
+        it(`should throw an error if "email" provided is an empty string`, () => {
+            // Arrange
+            const cb = () => new Employee("name", "1", ``, `Engineer`);
+            const err = new Error(
+                `Expected parameter 'email' to be a non empty string`);
+                expect(cb).toThrowError(err);
+            }),
         it(`should create an object with a 'role' property set to the 'role' argument provided when called with the 'new' keyword`, () => {
             // Arrange
             const role = `Manager`;
@@ -84,6 +106,13 @@ describe(`Employee`, () => {
 
             // Assert
             expect(cb).toThrowError(err);
+        });
+        it(`should throw an error if "role" provided is an empty string`, () => {
+            // Arrange
+            const cb = () => new Employee("name", "1", "email", ``);
+            const err = new Error(
+                `Expected parameter 'role' to be a non empty string`);
+                expect(cb).toThrowError(err);
         });
 });
 });

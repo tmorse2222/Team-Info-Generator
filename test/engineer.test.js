@@ -84,6 +84,15 @@ describe(`Engineer`, () => {
             // Assert
             expect(cb).toThrowError(err);
         }),
+        it(`should throw an error if "github" provided is undefined`, () => {
+            // Arrange
+            const cb = () => new Engineer("name", "1", "email", "Engineer",);
+            const err = new Error(
+                `Expected parameter 'github' to be a non empty string`
+            );
+            // Assert
+            expect(cb).toThrowError(err);
+        }),
         it(`should create an object with a 'role' property set to the 'role' argument provided when called with the 'new' keyword`, () => {
             // Arrange
             const role = `Engineer`;
