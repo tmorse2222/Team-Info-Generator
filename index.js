@@ -3,6 +3,7 @@ const fs = require(`fs`);
 const inquirer = require(`inquirer`);
 const Employee = require(`./lib/employee.js`);
 const Manager = require(`./lib/manager.js`);
+const Engineer = require(`./lib/engineer.js`);
 let htmlContent = "";
 // Employee list
 let employeeList = [];
@@ -11,12 +12,7 @@ let projectName = ``;
 // Class creation
 
 
-class Engineer extends Employee.Employee {
-    constructor(name, id, email, role, github) {
-        super(name, id, email, role);
-        this.github = github;
-    }
-};
+
 class Intern extends Employee.Employee {
     constructor(name, id, email, role, school) {
         super(name, id, email, role);
@@ -61,7 +57,7 @@ inquirer.prompt([
         message: `What is the engineer's github?`,
         name: `engineerGithub`}
 ]).then(function(answer){
-    let newEngineer = new Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, `Engineer`, answer.engineerGithub);
+    let newEngineer = new Engineer.Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, `Engineer`, answer.engineerGithub);
     employeeList.push(newEngineer);
 newMember();
 });};
