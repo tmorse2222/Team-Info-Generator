@@ -1,32 +1,27 @@
 // Npm requirements
 const fs = require(`fs`);
 const inquirer = require(`inquirer`);
-var htmlContent = "";
+const Employee = require(`./lib/employee.js`);
+let htmlContent = "";
 // Employee list
 let employeeList = [];
 // Project Name
 let projectName = ``;
 // Class creation
-class Employee {
-    constructor(name, id, email, role) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
-    this.role = role;
-}};
-class Manager extends Employee {
+
+class Manager extends Employee.Employee {
     constructor(name, id, email, role, officeNumber) {
         super(name, id, email, role);
         this.officeNumber = officeNumber;
     }
 };
-class Engineer extends Employee {
+class Engineer extends Employee.Employee {
     constructor(name, id, email, role, github) {
         super(name, id, email, role);
         this.github = github;
     }
 };
-class Intern extends Employee {
+class Intern extends Employee.Employee {
     constructor(name, id, email, role, school) {
         super(name, id, email, role);
         this.school = school;
