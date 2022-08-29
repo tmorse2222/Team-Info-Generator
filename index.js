@@ -1,9 +1,9 @@
 // Npm requirements
 const fs = require(`fs`);
 const inquirer = require(`inquirer`);
-const Employee = require(`./lib/employee.js`);
 const Manager = require(`./lib/manager.js`);
 const Engineer = require(`./lib/engineer.js`);
+const Intern = require(`./lib/intern.js`);
 let htmlContent = "";
 // Employee list
 let employeeList = [];
@@ -13,12 +13,7 @@ let projectName = ``;
 
 
 
-class Intern extends Employee.Employee {
-    constructor(name, id, email, role, school) {
-        super(name, id, email, role);
-        this.school = school;
-    }
-};
+
 // functions to ask for new employee info
 function newMember(){
     inquirer.prompt([
@@ -81,7 +76,7 @@ inquirer.prompt([
         message: `What is the intern's school?`,
         name: `internSchool`}
 ]).then(function(answer){
-    let newIntern = new Intern(answer.internName, answer.internId, answer.internEmail, `Intern`, answer.internSchool);
+    let newIntern = new Intern.Intern(answer.internName, answer.internId, answer.internEmail, `Intern`, answer.internSchool);
     employeeList.push(newIntern);
 newMember();
 })}
