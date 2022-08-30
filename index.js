@@ -130,7 +130,7 @@ function teamComplete(){
 fs.writeFile(`${projectName} Team.html`, htmlContent,
  function(err){
     if (err) throw err;
-    console.log(`File created under ${projectName}Team.html`);
+    console.log(`File created under ${projectName} Team.html`);
 });
 
 };
