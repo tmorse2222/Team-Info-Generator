@@ -49,7 +49,7 @@ inquirer.prompt([
         name: `engineerEmail`},
     {
         type: `input`,
-        message: `What is the engineer's github?`,
+        message: `What is the engineer's github username?`,
         name: `engineerGithub`}
 ]).then(function(answer){
     let newEngineer = new Engineer.Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, `Engineer`, answer.engineerGithub);
