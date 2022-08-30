@@ -172,3 +172,7 @@ inquirer.prompt([
 start();
 
 exports.start = start;
+exports.newMember = newMember;
+exports.newEngineer = newEngineer;
+exports.newIntern = newIntern;
+exports.teamComplete = teamComplete;
