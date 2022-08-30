@@ -171,3 +171,4 @@ inquirer.prompt([
 
 start();
 
+exports.start = start;
